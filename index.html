@@ -654,7 +654,7 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none;}
     <div class="price-good">
       <span class="price-good-label">Свежий Вздох — сейчас</span>
       <span class="price-was" id="price-was">4 900 ₽/мес</span>
-      <span class="price-good-value" id="hero-price">950 ₽/мес</span>
+      <span class="price-good-value" id="hero-price">450 ₽/мес</span>
     </div>
   </div>
 
@@ -681,26 +681,33 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none;}
   <div class="discount-tiers" id="price-ladder">
     <div class="dt" id="dt-0">
       <div class="dt-left">
-        <div class="dt-when">2 часа</div>
-        <div class="dt-label">Готов — и действуешь сразу</div>
+        <div class="dt-when">1 час</div>
+        <div class="dt-label">Готов — и действуешь прямо сейчас</div>
       </div>
-      <div class="dt-price">950 ₽/мес</div>
+      <div class="dt-price">450 ₽/мес</div>
     </div>
     <div class="dt" id="dt-1">
       <div class="dt-left">
-        <div class="dt-when">24 часа</div>
-        <div class="dt-label">Думаешь — но не тянешь</div>
+        <div class="dt-when">12 часов</div>
+        <div class="dt-label">Думаешь — но недолго</div>
       </div>
-      <div class="dt-price">990 ₽/мес</div>
+      <div class="dt-price">500 ₽/мес</div>
     </div>
     <div class="dt" id="dt-2">
       <div class="dt-left">
-        <div class="dt-when">7 дней</div>
+        <div class="dt-when">3 дня 12 часов</div>
+        <div class="dt-label">Откладываешь — но ещё думаешь</div>
+      </div>
+      <div class="dt-price">990 ₽/мес</div>
+    </div>
+    <div class="dt" id="dt-3">
+      <div class="dt-left">
+        <div class="dt-when">11 дней 12 часов</div>
         <div class="dt-label">Откладываешь на потом</div>
       </div>
       <div class="dt-price">1 450 ₽/мес</div>
     </div>
-    <div class="dt" id="dt-3">
+    <div class="dt" id="dt-4">
       <div class="dt-left">
         <div class="dt-when">навсегда</div>
         <div class="dt-label">Полная цена программы</div>
@@ -817,7 +824,7 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none;}
     </svg>
   </div>
   <a class="btn-main" href="#price">Стать свободным от никотина →</a>
-  <p class="price-note" id="cta-price-note">990 ₽ в месяц · отменить в любой момент</p>
+  <p class="price-note" id="cta-price-note">450 ₽ в месяц · отменить в любой момент</p>
   <p class="cta-sub">Мы уже собрались. Одному — не вариант. Вместе — другое дело.</p>
 </div>
 
@@ -834,13 +841,14 @@ footer a{color:rgba(255,255,255,.5);text-decoration:none;}
 
 <script>
 // ─── ТИРЫ ───────────────────────────────────
-const KEY = 'svezhy_first_visit_v2';
+const KEY = 'svezhy_first_visit_v3';
 const H = 3600000;
 const TIERS = [
-  { until: 2*H,      price: '950 ₽/мес',   note: '950 ₽ в месяц · отменить в любой момент',   link: 'https://t.me/tribute/app?startapp=s11nt' },
-  { until: 24*H,     price: '990 ₽/мес',   note: '990 ₽ в месяц · отменить в любой момент',   link: 'https://t.me/tribute/app?startapp=sVVm' },
-  { until: 7*24*H,   price: '1 450 ₽/мес', note: '1 450 ₽ в месяц · отменить в любой момент', link: 'https://t.me/tribute/app?startapp=s11nv' },
-  { until: Infinity,  price: '4 900 ₽/мес', note: '4 900 ₽ в месяц · отменить в любой момент', link: 'https://t.me/tribute/app?startapp=s11nx' },
+  { until: 1*H,          price: '450 ₽/мес',   note: '450 ₽ в месяц · отменить в любой момент',   link: 'https://t.me/tribute/app?startapp=s14Xv' },
+  { until: 12*H,         price: '500 ₽/мес',   note: '500 ₽ в месяц · отменить в любой момент',   link: 'https://t.me/tribute/app?startapp=s14Xy' },
+  { until: 84*H,         price: '990 ₽/мес',   note: '990 ₽ в месяц · отменить в любой момент',   link: 'https://t.me/tribute/app?startapp=sVVm' },
+  { until: 276*H,        price: '1 450 ₽/мес', note: '1 450 ₽ в месяц · отменить в любой момент', link: 'https://t.me/tribute/app?startapp=s11nv' },
+  { until: Infinity,     price: '4 900 ₽/мес', note: '4 900 ₽ в месяц · отменить в любой момент', link: 'https://t.me/tribute/app?startapp=s11nx' },
 ];
 
 if (!localStorage.getItem(KEY)) {
