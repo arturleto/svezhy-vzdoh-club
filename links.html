@@ -1,0 +1,374 @@
+<title>Свежий Вздох: карта ссылок</title>
+<style>
+:root {
+  --bg: #F0F7F2;
+  --card: #fff;
+  --green: #1A5C3E;
+  --green-mid: #2A7A55;
+  --pale: #A8E6C5;
+  --text: #0D1F15;
+  --muted: #5A7568;
+  --border: #DCF0E5;
+  --tag-bg: #E8F7EF;
+  --mono: 'SF Mono', 'Fira Mono', 'Consolas', monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0A1F12;
+    --card: #122B1C;
+    --green: #4ADE80;
+    --green-mid: #5AEE90;
+    --pale: #A8E6C5;
+    --text: #E8F5EE;
+    --muted: #7AB898;
+    --border: #1E4030;
+    --tag-bg: #0F2A1A;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0A1F12; --card: #122B1C; --green: #4ADE80; --green-mid: #5AEE90;
+  --pale: #A8E6C5; --text: #E8F5EE; --muted: #7AB898; --border: #1E4030; --tag-bg: #0F2A1A;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.5;
+  padding: 0 0 64px;
+}
+
+header {
+  background: var(--green);
+  color: #fff;
+  padding: 28px 20px 24px;
+  text-align: center;
+}
+header h1 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  line-height: 1.2;
+}
+header p {
+  font-size: .82rem;
+  color: rgba(168,230,197,.75);
+  margin-top: 4px;
+}
+
+.sections {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 20px 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.section-title {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.link-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  min-width: 0;
+}
+.link-row:last-child { border-bottom: none; }
+
+.link-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.link-label {
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.link-url {
+  font-size: .72rem;
+  font-family: var(--mono);
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.link-tag {
+  font-size: .65rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 20px;
+  background: var(--tag-bg);
+  color: var(--green);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.link-tag.red { background: #FFF0EE; color: #B91C1C; }
+
+.btn-copy {
+  flex-shrink: 0;
+  background: var(--tag-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--green);
+  cursor: pointer;
+  transition: background .15s;
+  white-space: nowrap;
+}
+.btn-copy:hover { background: var(--border); }
+.btn-copy.copied { color: #fff; background: var(--green); border-color: var(--green); }
+
+.open-link {
+  text-decoration: none;
+  flex-shrink: 0;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background .15s;
+}
+.open-link:hover { background: var(--border); }
+
+.note-block {
+  padding: 12px 16px;
+  font-size: .82rem;
+  color: var(--muted);
+  line-height: 1.6;
+  background: var(--tag-bg);
+  border-top: 1px solid var(--border);
+}
+.note-block strong { color: var(--text); }
+</style>
+
+<header>
+  <h1>🌿 Свежий Вздох — карта ссылок</h1>
+  <p>Все ссылки проекта в одном месте</p>
+</header>
+
+<div class="sections">
+
+  <!-- СТРАНИЦЫ -->
+  <div class="section">
+    <div class="section-title">Страницы (GitHub Pages)</div>
+
+    <div class="link-row">
+      <div class="link-info">
+        <span class="link-label">Основная воронка (диагностика)</span>
+        <span class="link-url">arturleto.github.io/svezhy-vzdoh/</span>
+      </div>
+      <span class="link-tag">Главная</span>
+      <button class="btn-copy" onclick="copyLink(this, 'https://arturleto.github.io/svezhy-vzdoh/')">Копировать</button>
+      <a class="open-link" href="https://arturleto.github.io/svezhy-vzdoh/" target="_blank">Открыть</a>
+    </div>
+
+    <div class="link-row">
+      <div class="link-info">
+        <span class="link-label">Продажник программы</span>
+        <span class="link-url">arturleto.github.io/svezhy-vzdoh/programma/</span>
+      </div>
+      <button class="btn-copy" onclick="copyLink(this, 'https://arturleto.github.io/svezhy-vzdoh/programma/')">Копировать</button>
+      <a class="open-link" href="https://arturleto.github.io/svezhy-vzdoh/programma/" target="_blank">Открыть</a>
+    </div>
+
+    <div class="link-row">
+      <div class="link-info">
+        <span class="link-label">Клуб (текущая версия)</span>
+        <span class="link-url">arturleto.github.io/svezhy-vzdoh-club/</span>
+      </div>
+      <span class="link-tag">Клуб</span>
+      <button class="btn-copy" onclick="copyLink(this, 'https://arturleto.github.io/svezhy-vzdoh-club/')">Копировать</button>
+      <a class="open-link" href="https://arturleto.github.io/svezhy-vzdoh-club/" target="_blank">Открыть</a>
+    </div>
+
+    <div class="link-row">
+      <div class="link-info">
+        <span class="link-label">Клуб — старая версия (с кружочками)</span>
+        <span class="link-url">arturleto.github.io/svezhy-vzdoh-club/oldversionwithRounds/</span>
+      </div>
+      <span class="link-tag">Архив</span>
+      <button class="btn-copy" onclick="copyLink(this, 'https://arturleto.github.io/svezhy-vzdoh-club/oldversionwithRounds/')">Копировать</button>
+      <a class="open-link" href="https://arturleto.github.io/svezhy-vzdoh-club/oldversionwithRounds/" target="_blank">Открыть</a>
+    </div>
+
+    <div class="link-row">
+      <div class="link-info">
+        <span class="link-label">Оффер клуба</span>
+        <span class="link-url">arturleto.github.io/svezhy-vzdoh-club/offer.html</span>
+      </div>
+      <button class="btn-copy" onclick="copyLink(this, 'https://arturleto.github.io/svezhy-vzdoh-club/offer.html')">Копировать</button>
+      <a class="open-link" href="https://arturleto.github.io/svezhy-vzdoh-club/offer.html" target="_blank">Открыть</a>
+    </div>
+
+    <div class="link-row">
+      <div class="link-info">
+        <span class="link-label">Страница успешной оплаты</span>
+        <span class="link-url">arturleto.github.io/svezhy-vzdoh/success/</span>
+      </div>
+      <button class="btn-copy" onclick="copyLink(this, 'https://arturleto.github.io/svezhy-vzdoh/success/')">Копировать</button>
+      <a class="open-link" href="https://arturleto.github.io/svezhy-vzdoh/success/" target="_blank">Открыть</a>
+    </div>
+
+  </div>
+
+  <!-- ОПЛАТА TRIBUTE -->
+  <div class="section">
+    <div class="section-title">Оплата — Tribute (TG ссылки)</div>
+
+    <div class="link-row">
+      <div class="link-info">
+        <span class="link-label">450 ₽/мес</span>
+        <span class="link-url">t.me/tribute/app?startapp=s14Xv</span>
+      </div>
+      <button class="btn-copy" onclick="copyLink(this, 'https://t.me/tribute/app?startapp=s14Xv')">Копировать</button>
+    </div>
+
+    <div class="link-row">
+      <div class="link-info">
+        <span class="link-label">500 ₽/мес</span>
+        <span class="link-url">t.me/tribute/app?startapp=s14Xy</span>
+      </div>
+      <button class="btn-copy" onclick="copyLink(this, 'https://t.me/tribute/app?startapp=s14Xy')">Копировать</button>
+    </div>
+
+    <div class="link-row">
+      <div class="link-info">
+        <span class="link-label">950 ₽/мес</span>
+        <span class="link-url">t.me/tribute/app?startapp=s11nt</span>
+      </div>
+      <span class="link-tag red">Старая</span>
+      <button class="btn-copy" onclick="copyLink(this, 'https://t.me/tribute/app?startapp=s11nt')">Копировать</button>
+    </div>
+
+    <div class="link-row">
+      <div class="link-info">
+        <span class="link-label">990 ₽/мес</span>
+        <span class="link-url">t.me/tribute/app?startapp=sVVm</span>
+      </div>
+      <button class="btn-copy" onclick="copyLink(this, 'https://t.me/tribute/app?startapp=sVVm')">Копировать</button>
+    </div>
+
+    <div class="link-row">
+      <div class="link-info">
+        <span class="link-label">1 450 ₽/мес</span>
+        <span class="link-url">t.me/tribute/app?startapp=s11nv</span>
+      </div>
+      <button class="btn-copy" onclick="copyLink(this, 'https://t.me/tribute/app?startapp=s11nv')">Копировать</button>
+    </div>
+
+    <div class="link-row">
+      <div class="link-info">
+        <span class="link-label">4 900 ₽/мес</span>
+        <span class="link-url">t.me/tribute/app?startapp=s11nx</span>
+      </div>
+      <button class="btn-copy" onclick="copyLink(this, 'https://t.me/tribute/app?startapp=s11nx')">Копировать</button>
+    </div>
+
+    <div class="note-block">
+      <strong>Web-ссылки</strong> (для тех у кого нет Telegram): замени <code>t.me/tribute/app?startapp=s</code> на <code>web.tribute.tg/s/</code> — например <code>web.tribute.tg/s/11nx</code>
+    </div>
+  </div>
+
+  <!-- GITHUB -->
+  <div class="section">
+    <div class="section-title">Репозитории GitHub</div>
+
+    <div class="link-row">
+      <div class="link-info">
+        <span class="link-label">svezhy-vzdoh (основная воронка)</span>
+        <span class="link-url">github.com/arturleto/svezhy-vzdoh</span>
+      </div>
+      <button class="btn-copy" onclick="copyLink(this, 'https://github.com/arturleto/svezhy-vzdoh')">Копировать</button>
+      <a class="open-link" href="https://github.com/arturleto/svezhy-vzdoh" target="_blank">Открыть</a>
+    </div>
+
+    <div class="link-row">
+      <div class="link-info">
+        <span class="link-label">svezhy-vzdoh-club (клуб)</span>
+        <span class="link-url">github.com/arturleto/svezhy-vzdoh-club</span>
+      </div>
+      <button class="btn-copy" onclick="copyLink(this, 'https://github.com/arturleto/svezhy-vzdoh-club')">Копировать</button>
+      <a class="open-link" href="https://github.com/arturleto/svezhy-vzdoh-club" target="_blank">Открыть</a>
+    </div>
+  </div>
+
+  <!-- АНАЛИТИКА -->
+  <div class="section">
+    <div class="section-title">Аналитика</div>
+
+    <div class="link-row">
+      <div class="link-info">
+        <span class="link-label">Яндекс Метрика — счётчик 110722782</span>
+        <span class="link-url">metrika.yandex.ru/dashboard?id=110722782</span>
+      </div>
+      <button class="btn-copy" onclick="copyLink(this, 'https://metrika.yandex.ru/dashboard?id=110722782')">Копировать</button>
+      <a class="open-link" href="https://metrika.yandex.ru/dashboard?id=110722782" target="_blank">Открыть</a>
+    </div>
+  </div>
+
+  <!-- СОЦСЕТИ -->
+  <div class="section">
+    <div class="section-title">Соцсети</div>
+
+    <div class="link-row">
+      <div class="link-info">
+        <span class="link-label">Instagram</span>
+        <span class="link-url">instagram.com/leto.s.v</span>
+      </div>
+      <button class="btn-copy" onclick="copyLink(this, 'https://instagram.com/leto.s.v')">Копировать</button>
+      <a class="open-link" href="https://instagram.com/leto.s.v" target="_blank">Открыть</a>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+function copyLink(btn, url) {
+  navigator.clipboard.writeText(url).then(function() {
+    const orig = btn.textContent;
+    btn.textContent = 'Скопировано';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.textContent = orig;
+      btn.classList.remove('copied');
+    }, 1500);
+  });
+}
+
+const mq = window.matchMedia('(prefers-color-scheme: dark)');
+document.documentElement.setAttribute('data-theme', mq.matches ? 'dark' : 'light');
+mq.addEventListener('change', function(e) {
+  document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+});
+</script>
