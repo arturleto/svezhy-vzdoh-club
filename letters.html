@@ -281,7 +281,7 @@
     <div class="tab" onclick="show('a')">A: не нажал<span class="tab-badge">41</span></div>
     <div class="tab" onclick="show('b')">B: не завершил<span class="tab-badge">30</span></div>
     <div class="tab" onclick="show('c')">C: нет разбора<span class="tab-badge">30</span></div>
-    <div class="tab" onclick="show('d')">D: нет клуба<span class="tab-badge">30</span></div>
+    <div class="tab" onclick="show('d')">D: не вступил<span class="tab-badge">30</span></div>
     <div class="tab" onclick="show('e')">E: нет оплаты<span class="tab-badge">30</span></div>
   </div>
 </div>
@@ -351,16 +351,16 @@
 
 <div id="d" class="content">
   <div class="segment-header">
-    <h2>Сегмент D, посмотрел разбор, не перешёл в клуб</h2>
-    <p>Открыл /razbor/, но не нажал «Вступить в клуб». Письмо 1 через 1ч и письмо 2 через 24ч уже есть в tracker.py.</p>
-    <div class="cta-info">Кнопка: Вступить в клуб → /gotov/club/</div>
+    <h2>Сегмент D, посмотрел разбор, не перешёл в «Свежий Вздох»</h2>
+    <p>Открыл /razbor/, но не нажал «Вступить в «Свежий Вздох»». Письмо 1 через 1ч и письмо 2 через 24ч уже есть в tracker.py.</p>
+    <div class="cta-info">Кнопка: Вступить в «Свежий Вздох» → /gotov/club/</div>
   </div>
   <div class="letters-grid" id="grid-d"></div>
 </div>
 
 <div id="e" class="content">
   <div class="segment-header">
-    <h2>Сегмент E, зашёл в клуб, не оплатил</h2>
+    <h2>Сегмент E, зашёл в «Свежий Вздох», не оплатил</h2>
     <p>Открыл /gotov/club/, таймер пошёл, но оплаты не было. Письмо 1 через 10мин и письмо 2 через 24ч уже есть в tracker.py.</p>
     <div class="cta-info">Кнопка: Оформить подписку → tribute 450₽</div>
   </div>
@@ -4426,7 +4426,7 @@ const CTA = {
   a: 'Пройти диагностику',
   b: 'Завершить диагностику',
   c: 'Посмотреть разбор',
-  d: 'Вступить в клуб',
+  d: 'Вступить в «Свежий Вздох»',
   e: 'Оформить подписку'
 };
 
